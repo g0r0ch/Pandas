@@ -27,17 +27,40 @@ crm_r_c['total'] = (crm_r_c['GZK_AI_Out_Cons.AI.Out.Cons2']
 
 #add columns and set place
 crm_r_c.insert(39, 'total_2',
-               crm_r_c['GZK_AI_Out_Cons.AI.Out.Cons2']
-               + crm_r_c['GZK_AI_Out_Cons.AI.Out.Cons3']
+               crm_r_c['GZK_DB10.F302']
+               + crm_r_c['GZK_DB10.WIR_601']
                )
 #refactor column
-crm_r_c['total_1'] = crm_r_c['total_1'].round()
+crm_r_c['total_2'] = crm_r_c['total_2'].round()
+
+#series create with random values
+np.random.seed(123456)
+s_random = pd.Series(np.random.normal(size=1010),
+                     index=crm_r_c.index)
+
+crm_r_c.loc[:, 'sample_col'] = s_random
+
+crm_r_c[:4]
 
 
+#columns invert
 
+crm_r_c.columns[::-1]
 
+crm_r_c[crm_r_c.columns[::-1]]
 
+#columns delete
 
+# del - удаляет серию из объекта
+del crm_r_c['sample_col']
+
+# pop - удаляет и в результате возвращает серию
+popped = crm_r_c.pop('total')
+#popped
+# drop возвращает новый ДФ с удалённым столцом
+dropped = crm_r_c.drop(['total_2'],
+                       axis=1)
+dropped
 
 
 
