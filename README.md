@@ -5,3 +5,5 @@
 
 2 dataframe.py - Создание DataFrame 
     Изучим еще несколько способов создания объекта DataFrame. В этом уроке мы создадим DataFrame из массива numpy, Series, словаря Series.
+
+3 rows columns select.py - Получить информацию о размере DataFrame, отбор строк и столбцов, индексация
